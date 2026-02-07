@@ -32,11 +32,13 @@ public class AlunoController {
     // REGISTRAR
     @PostMapping("/registrar")
     public ResponseEntity<?> registrar(@RequestBody Map<String, String> body) {
+        
+        System.out.println("BODY RECEBIDO NA API: " + body);
 
         String aluno = body.get("aluno");
         String senha = body.get("senha");
 
-        if (aluno == null || senha == null) {
+        if (aluno == null || aluno.isBlank() || senha == null || senha.isBlank()) {
             return ResponseEntity.badRequest().body("Aluno e senha são obrigatórios");
         }
 
