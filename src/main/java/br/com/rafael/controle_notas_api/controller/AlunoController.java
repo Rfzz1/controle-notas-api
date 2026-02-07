@@ -2,6 +2,7 @@ package br.com.rafael.controle_notas_api.controller;
 
 import br.com.rafael.controle_notas_api.dto.AlunoDTO;
 import br.com.rafael.controle_notas_api.dto.LoginResponseDTO;
+import br.com.rafael.controle_notas_api.dto.RegistroAlunoDTO;
 import br.com.rafael.controle_notas_api.model.Aluno;
 import br.com.rafael.controle_notas_api.model.Materia;
 import br.com.rafael.controle_notas_api.repository.MateriaRepository;
@@ -31,19 +32,15 @@ public class AlunoController {
 
     // REGISTRAR
     @PostMapping("/registrar")
-    public ResponseEntity<?> registrar(@RequestBody Map<String, String> body) {
+    public ResponseEntity<?> registrar(@RequestBody RegistroAlunoDTO dto) {
         
-        System.out.println("BODY RECEBIDO NA API: " + body);
-
-        String aluno = body.get("aluno");
-        String senha = body.get("senha");
-
-        if (aluno == null || aluno.isBlank() || senha == null || senha.isBlank()) {
-            return ResponseEntity.badRequest().body("Aluno e senha são obrigatórios");
+        if (dto.getAluno() == null || dto.getSenha() == null) {
+            return
+            ResponseEntity.badRequest().body("Dados Inválidos");
         }
 
-        Aluno novo = service.registrar(aluno, senha);
-        return ResponseEntity.ok(new AlunoDTO(novo.getId(), novo.getAluno()));
+        Aluno novo = service.registrar(dto.getAluno(), dto.getSenha());
+        return ResponseEntity.ok(novo);
     }
 
     // LOGIN
