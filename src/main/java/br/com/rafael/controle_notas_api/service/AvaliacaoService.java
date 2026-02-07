@@ -1,0 +1,65 @@
+package br.com.rafael.controle_notas_api.service;
+
+
+import br.com.rafael.controle_notas_api.dto.AvaliacaoCreateDTO;
+import br.com.rafael.controle_notas_api.dto.AvaliacaoDTO;
+import br.com.rafael.controle_notas_api.model.*;
+import br.com.rafael.controle_notas_api.repository.*;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AvaliacaoService {
+
+    private final AvaliacaoRepository repository;
+    private final AlunoRepository alunoRepository;
+    private final MateriaRepository materiaRepository;
+    private final TipoAvaliacaoRepository tipoRepository;
+
+    public AvaliacaoService(
+        AvaliacaoRepository repository,
+        AlunoRepository alunoRepository,
+        MateriaRepository materiaRepository,
+        TipoAvaliacaoRepository tipoRepository
+    ) {
+        this.repository = repository;
+        this.alunoRepository = alunoRepository;
+        this.materiaRepository = materiaRepository;
+        this.tipoRepository = tipoRepository;
+    }
+
+    public AvaliacaoDTO criar(AvaliacaoCreateDTO dto) {
+
+        Aluno aluno = alunoRepository.findById(dto.getAlunoId())
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+
+        Materia materia = materiaRepository.findById(dto.getMateriaId())
+                .orElseThrow(() -> new RuntimeException("Matéria não encontrada"));
+
+        TipoAvaliacao tipo = tipoRepository.findById(dto.getTipoId())
+                .orElseThrow(() -> new RuntimeException("Tipo não encontrado"));
+
+        Avaliacao a = new Avaliacao();
+        a.setAluno(aluno);
+        a.setMateria(materia);
+        a.setTipo(tipo);
+        a.setTrimestre(dto.getTrimestre());
+        a.setTitulo(dto.getTitulo());
+        a.setDescricao(dto.getDescricao());
+        a.setValorMax(dto.getValorMax());
+        a.setNota(dto.getNota());
+        a.setData(dto.getData());
+
+        Avaliacao salva = repository.save(a);
+        return new AvaliacaoDTO(salva);
+    }
+
+    public List<AvaliacaoDTO> listarPorAluno(Long alunoId) {
+            return repository.findByAlunoId(alunoId)
+                    .stream()
+                    .map(AvaliacaoDTO::new)
+                    .collect(Collectors.toList());
+        }
+}
+
