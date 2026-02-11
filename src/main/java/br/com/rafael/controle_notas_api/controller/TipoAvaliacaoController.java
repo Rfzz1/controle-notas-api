@@ -5,6 +5,7 @@ import br.com.rafael.controle_notas_api.service.TipoAvaliacaoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/tipos-avaliacao")
@@ -17,7 +18,7 @@ public class TipoAvaliacaoController {
     }
 
     @GetMapping
-    public List<TipoAvaliacaoDTO> listar() {
-        return service.listar();
+    public ResponseEntity<List<TipoAvaliacaoDTO>>listar() {
+        return ResponseEntity.ok(service.listar());
     }
 }

@@ -5,6 +5,7 @@ import br.com.rafael.controle_notas_api.service.MateriaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/materias")
@@ -18,7 +19,7 @@ public class MateriaController {
 
     // LISTAR TODAS AS MATÉRIAS
     @GetMapping
-    public List<MateriaDTO> listar() {
-        return service.listarMaterias();
+    public ResponseEntity<List<MateriaDTO>> listar() {
+        return ResponseEntity.ok(service.listarMaterias());
     }
 }
