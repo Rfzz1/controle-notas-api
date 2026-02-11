@@ -3,6 +3,7 @@ package br.com.rafael.controle_notas_api.controller;
 
 import br.com.rafael.controle_notas_api.dto.AvaliacaoCreateDTO;
 import br.com.rafael.controle_notas_api.dto.AvaliacaoDTO;
+import br.com.rafael.controle_notas_api.dto.NotaFinalDTO;
 import br.com.rafael.controle_notas_api.model.Avaliacao;
 import br.com.rafael.controle_notas_api.service.AvaliacaoService;
 import java.util.List;
@@ -33,6 +34,11 @@ public ResponseEntity<AvaliacaoDTO> criar(@RequestBody AvaliacaoCreateDTO dto) {
 @GetMapping("/aluno/{alunoId}")
 public ResponseEntity<List<AvaliacaoDTO>> listarPorAluno(@PathVariable Long alunoId ,@RequestParam int trimestre) {
     return ResponseEntity.ok(service.listarPorAlunoETrimestre(alunoId, trimestre));
+}
+
+@GetMapping("/boletim-final/{alunoId}")
+public List<NotaFinalDTO> boletimFinal(@PathVariable Long alunoId) {
+    return service.boletimFinal(alunoId);
 }
 }
 

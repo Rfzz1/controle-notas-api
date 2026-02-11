@@ -3,6 +3,7 @@ package br.com.rafael.controle_notas_api.service;
 
 import br.com.rafael.controle_notas_api.dto.AvaliacaoCreateDTO;
 import br.com.rafael.controle_notas_api.dto.AvaliacaoDTO;
+import br.com.rafael.controle_notas_api.dto.NotaFinalDTO;
 import br.com.rafael.controle_notas_api.model.*;
 import br.com.rafael.controle_notas_api.repository.*;
 import java.util.List;
@@ -60,5 +61,9 @@ public class AvaliacaoService {
                     .stream()
                     .map(AvaliacaoDTO::new)
                     .collect(Collectors.toList());
-        }
+    }
+    
+    public List<NotaFinalDTO> boletimFinal(Long alunoId) {
+        return repository.buscarNotasFinais(alunoId);
+    }
 }
