@@ -16,14 +16,11 @@ public class MateriaService {
         this.repository = repository;
     }
 
-    // 🔹 LISTAR TODAS AS MATÉRIAS
+    // LISTAR TODAS AS MATÉRIAS
     public List<MateriaDTO> listarMaterias() {
         return repository.findAll()
                 .stream()
-                .map(m -> new MateriaDTO(
-                        m.getId(),
-                        m.getMateria()
-                ))
+                .map(MateriaDTO::new)
                 .collect(Collectors.toList());
     }
 }
