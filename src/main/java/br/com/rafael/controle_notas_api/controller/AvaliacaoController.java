@@ -39,6 +39,12 @@ public ResponseEntity<List<AvaliacaoDTO>> listarPorAluno(@PathVariable Long alun
 @GetMapping("/boletim-final/{alunoId}")
 public List<NotaFinalDTO> boletimFinal(@PathVariable Long alunoId) {
     return service.boletimFinal(alunoId);
+} 
+
+@DeleteMapping("/{id}")
+public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    service.deletar(id);
+    return ResponseEntity.noContent().build();
 }
 }
 

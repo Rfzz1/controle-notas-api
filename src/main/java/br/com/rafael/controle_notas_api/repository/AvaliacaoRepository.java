@@ -21,7 +21,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
         )
         FROM Materia m
         LEFT JOIN Avaliacao a
-            ON a.materia = m
+            ON a.materia.id = m.id
            AND a.aluno.id = :alunoId
            AND a.trimestre IN (1, 2, 3)
         GROUP BY m.id, m.materia
@@ -29,3 +29,4 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
     """)
     List<NotaFinalDTO> buscarNotasFinais(@Param("alunoId") Long alunoId);
 }
+

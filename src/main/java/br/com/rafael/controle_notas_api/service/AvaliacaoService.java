@@ -66,4 +66,8 @@ public class AvaliacaoService {
     public List<NotaFinalDTO> boletimFinal(Long alunoId) {
         return repository.buscarNotasFinais(alunoId);
     }
+    
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
 }
