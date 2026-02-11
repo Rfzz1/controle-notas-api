@@ -14,7 +14,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
     List<Avaliacao> findByAlunoIdAndTrimestre(Long alunoId, int Trimestre);
     
     @Query("""
-        SELECT new br.com.seupacote.dto.NotaFinalDTO(
+        SELECT new br.com.rafael.controle_notas_api.dto.NotaFinalDTO(
             m.id,
             m.materia,
             COALESCE(SUM(a.nota), 0)
