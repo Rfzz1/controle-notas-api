@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
 
-    List<Avaliacao> findByAlunoId(Long alunoId);
+    List<Avaliacao> findByAlunoIdAndTrimestre(Long alunoId, int Trimestre);
 }

@@ -55,11 +55,10 @@ public class AvaliacaoService {
         return new AvaliacaoDTO(salva);
     }
 
-    public List<AvaliacaoDTO> listarPorAluno(Long alunoId) {
-            return repository.findByAlunoId(alunoId)
+    public List<AvaliacaoDTO> listarPorAlunoETrimestre(Long alunoId, int trimestre) {
+            return repository.findByAlunoIdAndTrimestre(alunoId, trimestre)
                     .stream()
                     .map(AvaliacaoDTO::new)
                     .collect(Collectors.toList());
         }
 }
-

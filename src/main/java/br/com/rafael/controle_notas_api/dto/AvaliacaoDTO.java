@@ -14,8 +14,8 @@ public class AvaliacaoDTO {
     private LocalDate data;
 
     private Long alunoId;
-    private Long materiaId;
-    private Long tipoId;
+    private String materia;
+    private String tipo;
 
     public AvaliacaoDTO(Avaliacao a) {
         this.id = a.getId();
@@ -26,8 +26,8 @@ public class AvaliacaoDTO {
         this.nota = a.getNota();
         this.data = a.getData();
         this.alunoId = a.getAluno().getId();
-        this.materiaId = a.getMateria().getId();
-        this.tipoId = a.getTipo().getId();
+        this.materia = a.getMateria().getMateria();
+        this.tipo = a.getTipo().getAvaliacao();
     }
 
     //GETTERS
@@ -39,6 +39,6 @@ public class AvaliacaoDTO {
     public double getNota() { return nota; }
     public LocalDate getData() { return data; }
     public Long getAlunoId() { return alunoId; }
-    public Long getMateriaId() { return materiaId; }
-    public Long getTipoId() { return tipoId; }
+    public String getMateriaId() { return materia; }
+    public String getTipoId() { return tipo; }
 }
