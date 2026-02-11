@@ -39,6 +39,6 @@ public class AvaliacaoDTO {
     public double getNota() { return nota; }
     public LocalDate getData() { return data; }
     public Long getAlunoId() { return alunoId; }
-    public String getMateriaId() { return materia; }
-    public String getTipoId() { return tipo; }
+    public String getMateria() { return materia; }
+    public String getTipo() { return tipo; }
 }
