@@ -13,6 +13,10 @@ public class AvaliacaoCreateDTO {
     private double valorMax;
     private double nota;
     private LocalDate data;
+    
+    public AvaliacaoCreateDTO() {
+        
+    }
 
     // 🔽 GETTERS
 
