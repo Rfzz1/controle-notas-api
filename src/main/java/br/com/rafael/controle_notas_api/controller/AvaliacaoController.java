@@ -47,6 +47,7 @@ public ResponseEntity<Void> deletar(@PathVariable Long id) {
     return ResponseEntity.noContent().build();
 }
 
+System.out.println(json);
 @PutMapping("/{id}")
 public ResponseEntity<AvaliacaoDTO> atualizar(
         @PathVariable Long id,
