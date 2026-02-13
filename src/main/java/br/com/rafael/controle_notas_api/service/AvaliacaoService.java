@@ -96,7 +96,6 @@ public class AvaliacaoService {
     avaliacao.setValorMax(dto.getValorMax());
     avaliacao.setData(dto.getData());
 
-
     repository.save(avaliacao);
 
     return new AvaliacaoDTO(avaliacao);
