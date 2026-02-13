@@ -70,4 +70,35 @@ public class AvaliacaoService {
     public void deletar(Long id) {
         repository.deleteById(id);
     }
+    
+    public AvaliacaoDTO atualizar(Long id, AvaliacaoCreateDTO dto) {
+
+    Avaliacao avaliacao = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Avaliação não encontrada"));
+    
+    Aluno aluno = alunoRepository.findById(dto.getAlunoId())
+            .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+    
+    Materia materia = materiaRepository.findById(dto.getMateriaId())
+            .orElseThrow(() -> new RuntimeException("Matéria não encontrada"));
+    
+    TipoAvaliacao tipo = tipoRepository.findById(dto.getTipoId())
+            .orElseThrow(() -> new RuntimeException("Tipo não encontrado"));
+    
+    avaliacao.setAluno(aluno);
+    avaliacao.setMateria(materia);
+    avaliacao.setTipo(tipo);
+    avaliacao.setTrimestre(dto.getTrimestre());
+
+    avaliacao.setTitulo(dto.getTitulo());
+    avaliacao.setDescricao(dto.getDescricao());
+    avaliacao.setNota(dto.getNota());
+    avaliacao.setValorMax(dto.getValorMax());
+    avaliacao.setData(dto.getData());
+
+
+    repository.save(avaliacao);
+
+    return new AvaliacaoDTO(avaliacao);
+}
 }
