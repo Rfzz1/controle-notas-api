@@ -49,7 +49,7 @@ public ResponseEntity<Void> deletar(@PathVariable Long id) {
 
 
 @PutMapping("/{id}")
-public ResponseEntity<AvaliacaoDTO> atualizar(
+public ResponseEntity<?> atualizar(
         @PathVariable Long id,
         @RequestBody AvaliacaoCreateDTO dto) {
 
