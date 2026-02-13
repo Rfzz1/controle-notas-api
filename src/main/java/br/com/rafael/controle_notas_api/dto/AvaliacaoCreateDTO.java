@@ -7,11 +7,11 @@ public class AvaliacaoCreateDTO {
     private Long alunoId;
     private Long materiaId;
     private Long tipoId;
-    private int trimestre;
+    private Integer trimestre;
     private String titulo;
     private String descricao;
-    private double valorMax;
-    private double nota;
+    private Double valorMax;
+    private Double nota;
     private LocalDate data;
     
     public AvaliacaoCreateDTO() {
@@ -32,7 +32,7 @@ public class AvaliacaoCreateDTO {
         return tipoId;
     }
 
-    public int getTrimestre() {
+    public Integer getTrimestre() {
         return trimestre;
     }
 
@@ -44,11 +44,11 @@ public class AvaliacaoCreateDTO {
         return descricao;
     }
 
-    public double getValorMax() {
+    public Double getValorMax() {
         return valorMax;
     }
 
-    public double getNota() {
+    public Double getNota() {
         return nota;
     }
 
