@@ -18,7 +18,7 @@ public class AvaliacaoCreateDTO {
         
     }
 
-    // 🔽 GETTERS
+    //GETTERS
 
     public Long getAlunoId() {
         return alunoId;
@@ -55,4 +55,41 @@ public class AvaliacaoCreateDTO {
     public LocalDate getData() {
         return data;
     }
+    
+    // SETTERS
+    public void setAlunoId(Long alunoId) {
+    this.alunoId = alunoId;
+}
+
+public void setMateriaId(Long materiaId) {
+    this.materiaId = materiaId;
+}
+
+public void setTipoId(Long tipoId) {
+    this.tipoId = tipoId;
+}
+
+public void setTrimestre(Integer trimestre) {
+    this.trimestre = trimestre;
+}
+
+public void setTitulo(String titulo) {
+    this.titulo = titulo;
+}
+
+public void setDescricao(String descricao) {
+    this.descricao = descricao;
+}
+
+public void setValorMax(Double valorMax) {
+    this.valorMax = valorMax;
+}
+
+public void setNota(Double nota) {
+    this.nota = nota;
+}
+
+public void setData(LocalDate data) {
+    this.data = data;
+}
 }
