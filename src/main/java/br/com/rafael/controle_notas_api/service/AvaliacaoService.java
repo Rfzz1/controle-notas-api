@@ -89,7 +89,7 @@ public class AvaliacaoService {
     avaliacao.setMateria(materia);
     avaliacao.setTipo(tipo);
     avaliacao.setTrimestre(dto.getTrimestre());
-
+   
     avaliacao.setTitulo(dto.getTitulo());
     avaliacao.setDescricao(dto.getDescricao());
     avaliacao.setNota(dto.getNota());
