@@ -3,6 +3,7 @@ package br.com.rafael.controle_notas_api.controller;
 
 import br.com.rafael.controle_notas_api.dto.AvaliacaoCreateDTO;
 import br.com.rafael.controle_notas_api.dto.AvaliacaoDTO;
+import br.com.rafael.controle_notas_api.dto.AvaliacaoResponseDTO;
 import br.com.rafael.controle_notas_api.dto.NotaFinalDTO;
 import br.com.rafael.controle_notas_api.model.Avaliacao;
 import br.com.rafael.controle_notas_api.service.AvaliacaoService;
@@ -55,6 +56,14 @@ public ResponseEntity<?> atualizar(
 
     AvaliacaoDTO atualizado = service.atualizar(id, dto);
     return ResponseEntity.ok(atualizado);
+}
+
+@GetMapping("/aluno/{alunoId}/trimestre/{trimestre}")
+public List<AvaliacaoResponseDTO>listarPorAlunoETrimestre(
+    @PathVariable Long alunoId,
+    @PathVariable Integer trimestre) {
+    
+    return service.listarPorAlunoETrimestre(alunoId, trimestre);
 }
 
 }

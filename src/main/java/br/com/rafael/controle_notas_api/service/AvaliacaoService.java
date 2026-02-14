@@ -3,6 +3,7 @@ package br.com.rafael.controle_notas_api.service;
 
 import br.com.rafael.controle_notas_api.dto.AvaliacaoCreateDTO;
 import br.com.rafael.controle_notas_api.dto.AvaliacaoDTO;
+import br.com.rafael.controle_notas_api.dto.AvaliacaoResponseDTO;
 import br.com.rafael.controle_notas_api.dto.NotaFinalDTO;
 import br.com.rafael.controle_notas_api.model.*;
 import br.com.rafael.controle_notas_api.repository.*;
@@ -99,5 +100,19 @@ public class AvaliacaoService {
     repository.save(avaliacao);
 
     return new AvaliacaoDTO(avaliacao);
+   
 }
+        public List<AvaliacaoResponseDTO>listarPorAlunoETrimestre(Long alunoId, Integer trimestre) {
+        List<Avaliacao> lista = repository.findByAlunoIdAndTrimestre(alunoId, trimestre);
+        
+        return lista.stream().map(a -> {
+            AvaliacaoResponseDTO dto = new AvaliacaoResponseDTO();
+            dto.setId(a.getId());
+            
+            dto.setAlunoId(a.getAluno().getId());
+            dto.setMateriaId(a.getMateria().getId());
+            dto.setNota(a.getNota());
+            return dto;
+        }).toList();
+    }
 }

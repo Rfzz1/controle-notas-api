@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
 
-    List<Avaliacao> findByAlunoIdAndTrimestre(Long alunoId, int Trimestre);
+    List<Avaliacao> findByAlunoIdAndTrimestre(Long alunoId, Integer Trimestre);
     
     @Query("""
         SELECT new br.com.rafael.controle_notas_api.dto.NotaFinalDTO(
