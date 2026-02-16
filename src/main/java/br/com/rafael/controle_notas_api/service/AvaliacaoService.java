@@ -112,6 +112,7 @@ public class AvaliacaoService {
             dto.setAlunoId(a.getAluno().getId());
             dto.setMateriaId(a.getMateria().getId());
             dto.setNota(a.getNota());
+            dto.setMateriaNome(a.getMateria().getMateria());
             return dto;
         }).toList();
     }

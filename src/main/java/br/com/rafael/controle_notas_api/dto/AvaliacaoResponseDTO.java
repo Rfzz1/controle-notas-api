@@ -21,6 +21,7 @@ public class AvaliacaoResponseDTO {
     private String descricao;
     private LocalDate data;
     private Integer trimestre;
+    private String materiaNome;
     
     // GETTERS E SETTERS
     public Long getId() {
@@ -82,6 +83,12 @@ public class AvaliacaoResponseDTO {
     }
     public void setTrimestre(Integer trimestre) {
         this.trimestre = trimestre;
+    }
+    public String getMateriaNome() {
+        return materiaNome;
+    }
+    public void setMateriaNome(String materiaNome) {
+        this.materiaNome = materiaNome;
     }
 }
     
