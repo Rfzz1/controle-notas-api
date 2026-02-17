@@ -43,6 +43,11 @@ public ResponseEntity<List<NotaFinalDTO>> boletimTrimestre(@PathVariable Long al
     return ResponseEntity.ok(service.boletimFinal(alunoId, trimestre));
 } 
 
+@GetMapping("/boletim-final/{alunoId}")
+public ResponseEntity<List<NotaFinalDTO>> boletimFinal(@PathVariable Long alunoId) {
+    return ResponseEntity.ok(service.boletimFinal(alunoId, null));
+} 
+
 @DeleteMapping("/{id}")
 public ResponseEntity<Void> deletar(@PathVariable Long id) {
     service.deletar(id);
