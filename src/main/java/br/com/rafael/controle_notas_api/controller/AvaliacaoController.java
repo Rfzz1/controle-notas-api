@@ -34,7 +34,7 @@ public ResponseEntity<AvaliacaoDTO> criar(@RequestBody AvaliacaoCreateDTO dto) {
 
 
 @GetMapping("/aluno/{alunoId}")
-public ResponseEntity<List<AvaliacaoDTO>> listarPorAluno(@PathVariable Long alunoId ,@RequestParam int trimestre) {
+public ResponseEntity<List<AvaliacaoResponseDTO>> listarPorAluno(@PathVariable Long alunoId ,@RequestParam Integer trimestre) {
     return ResponseEntity.ok(service.listarPorAlunoETrimestre(alunoId, trimestre));
 }
 
