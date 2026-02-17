@@ -2,6 +2,8 @@ package br.com.rafael.controle_notas_api.repository;
 
 import br.com.rafael.controle_notas_api.dto.NotaFinalDTO;
 import br.com.rafael.controle_notas_api.model.Avaliacao;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
+    
+    
 
     List<Avaliacao> findByAlunoIdAndTrimestre(Long alunoId, Integer Trimestre);
     
@@ -28,5 +32,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
         ORDER BY m.materia
     """)
     List<NotaFinalDTO> buscarNotasFinais(Long alunoId, Integer trimestre);
+    
+   
 }
 

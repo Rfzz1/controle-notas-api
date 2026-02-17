@@ -6,6 +6,7 @@ import br.com.rafael.controle_notas_api.dto.AvaliacaoDTO;
 import br.com.rafael.controle_notas_api.dto.AvaliacaoResponseDTO;
 import br.com.rafael.controle_notas_api.dto.NotaFinalDTO;
 import br.com.rafael.controle_notas_api.model.Avaliacao;
+import br.com.rafael.controle_notas_api.repository.AvaliacaoRepository;
 import br.com.rafael.controle_notas_api.service.AvaliacaoService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,9 @@ public ResponseEntity<List<AvaliacaoDTO>> listarPorAluno(@PathVariable Long alun
     return ResponseEntity.ok(service.listarPorAlunoETrimestre(alunoId, trimestre));
 }
 
-@GetMapping("/boletim-final/{alunoId}")
-public List<NotaFinalDTO> boletimFinal(@PathVariable Long alunoId, Integer trimestre) {
-    return service.boletimFinal(alunoId, trimestre);
+@GetMapping("/boletim-trimestre/{alunoId}")
+public ResponseEntity<List<NotaFinalDTO>> boletimTrimestre(@PathVariable Long alunoId, @RequestParam Integer trimestre) {
+    return ResponseEntity.ok(service.boletimFinal(alunoId, trimestre));
 } 
 
 @DeleteMapping("/{id}")
