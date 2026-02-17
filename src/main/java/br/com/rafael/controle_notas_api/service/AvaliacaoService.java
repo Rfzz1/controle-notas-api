@@ -108,11 +108,16 @@ public class AvaliacaoService {
         return lista.stream().map(a -> {
             AvaliacaoResponseDTO dto = new AvaliacaoResponseDTO();
             dto.setId(a.getId());
-            
             dto.setAlunoId(a.getAluno().getId());
             dto.setMateriaId(a.getMateria().getId());
-            dto.setNota(a.getNota());
             dto.setMateriaNome(a.getMateria().getMateria());
+            dto.setTipoId(a.getTipo() !=null ? a.getTipo().getId() : null);
+            dto.setTitulo(a.getTitulo());
+            dto.setDescricao(a.getDescricao());
+            dto.setValorMax(a.getValorMax());
+            dto.setNota(a.getNota());
+            dto.setData(a.getData());
+            dto.setTrimestre(a.getTrimestre());
             return dto;
         }).toList();
     }
