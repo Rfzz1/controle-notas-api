@@ -38,8 +38,8 @@ public ResponseEntity<List<AvaliacaoDTO>> listarPorAluno(@PathVariable Long alun
 }
 
 @GetMapping("/boletim-final/{alunoId}")
-public List<NotaFinalDTO> boletimFinal(@PathVariable Long alunoId) {
-    return service.boletimFinal(alunoId);
+public List<NotaFinalDTO> boletimFinal(@PathVariable Long alunoId, Integer trimestre) {
+    return service.boletimFinal(alunoId, trimestre);
 } 
 
 @DeleteMapping("/{id}")
@@ -59,11 +59,13 @@ public ResponseEntity<?> atualizar(
 }
 
 @GetMapping("/aluno/{alunoId}/trimestre/{trimestre}")
-public List<AvaliacaoResponseDTO>listarPorAlunoETrimestre(
+public ResponseEntity<List<AvaliacaoResponseDTO>>listarPorAlunoETrimestre(
     @PathVariable Long alunoId,
     @PathVariable Integer trimestre) {
     
-    return service.listarPorAlunoETrimestre(alunoId, trimestre);
+    return ResponseEntity.ok(
+            service.listarPorAlunoETrimestre(alunoId, trimestre)
+    );
 }
 
 }
