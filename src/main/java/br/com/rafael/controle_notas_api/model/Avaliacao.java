@@ -67,11 +67,11 @@ public class Avaliacao {
         return descricao;
     }
 
-    public double getValorMax() {
+    public Double getValorMax() {
         return valorMax;
     }
 
-    public double getNota() {
+    public Double getNota() {
         return nota;
     }
 

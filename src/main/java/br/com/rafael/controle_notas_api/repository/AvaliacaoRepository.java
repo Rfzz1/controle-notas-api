@@ -15,7 +15,14 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
     
     
 
-    List<Avaliacao> findByAlunoIdAndTrimestre(Long alunoId, Integer Trimestre);
+    @Query("""
+        SELECT a FROM Avaliacao a
+           JOIN FETCH a.materia
+           JOIN FETCH a.tipo
+           WHERE a.aluno.id = :alunoId
+           AND a.trimestre = :trimestre
+           """)
+    List<Avaliacao>buscarPorAlunoETrimestre(@Param("alunoId") Long alunoId, @Param("trimestre") Integer trimestre);
     
     @Query("""
         SELECT new br.com.rafael.controle_notas_api.dto.NotaFinalDTO(
@@ -31,7 +38,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
         GROUP BY m.id, m.materia
         ORDER BY m.materia
     """)
-    List<NotaFinalDTO> buscarNotasFinais(Long alunoId, Integer trimestre);
+    List<NotaFinalDTO> buscarNotasFinais(@Param("alunoId")Long alunoId, @Param("trimestre") Integer trimestre);
     
    
 }

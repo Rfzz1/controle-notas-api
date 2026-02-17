@@ -98,7 +98,7 @@ public class AvaliacaoService {
    
 }
         public List<AvaliacaoResponseDTO>listarPorAlunoETrimestre(Long alunoId, Integer trimestre) {
-        List<Avaliacao> lista = repository.findByAlunoIdAndTrimestre(alunoId, trimestre);
+        List<Avaliacao> lista = repository.buscarPorAlunoETrimestre(alunoId, trimestre);
         
         return lista.stream().map(a -> {
             AvaliacaoResponseDTO dto = new AvaliacaoResponseDTO();
