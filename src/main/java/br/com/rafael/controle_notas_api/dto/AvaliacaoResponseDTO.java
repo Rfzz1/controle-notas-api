@@ -22,6 +22,7 @@ public class AvaliacaoResponseDTO {
     private LocalDate data;
     private Integer trimestre;
     private String materiaNome;
+    private String tipoNome;
     
     // GETTERS E SETTERS
     public Long getId() {
@@ -89,6 +90,12 @@ public class AvaliacaoResponseDTO {
     }
     public void setMateriaNome(String materiaNome) {
         this.materiaNome = materiaNome;
+    }
+    public String getTipoNome() {
+        return tipoNome;
+    }
+    public void setTipoNome(String tipoNome) {
+        this.tipoNome = tipoNome;
     }
 }
     

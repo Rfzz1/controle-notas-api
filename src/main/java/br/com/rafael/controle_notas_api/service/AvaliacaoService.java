@@ -113,6 +113,7 @@ public class AvaliacaoService {
             dto.setNota(a.getNota());
             dto.setData(a.getData());
             dto.setTrimestre(a.getTrimestre());
+            dto.setTipoNome(a.getTipo() !=null ? a.getTipo().getAvaliacao() : null);
             return dto;
         }).toList();
     }

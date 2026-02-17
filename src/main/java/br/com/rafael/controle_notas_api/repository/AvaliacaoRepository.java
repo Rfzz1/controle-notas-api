@@ -27,7 +27,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
         LEFT JOIN Avaliacao a
             ON a.materia.id = m.id
            AND a.aluno.id = :alunoId
-           AND a.trimestre = :trimestre
+           AND (:trimestre IS NULL OR a.trimestre = :trimestre)
         GROUP BY m.id, m.materia
         ORDER BY m.materia
     """)
